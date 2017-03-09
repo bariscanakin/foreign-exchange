@@ -1,8 +1,8 @@
 package com.foreign.service.impl;
 
-import com.foreign.domain.Conversion;
+import com.foreign.domain.model.Conversion;
 import com.foreign.exception.RetrofitCallException;
-import com.foreign.repository.ConversionRepository;
+import com.foreign.domain.repository.ConversionRepository;
 import com.foreign.service.ConversionService;
 import com.foreign.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;

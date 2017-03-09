@@ -1,6 +1,6 @@
 package com.foreign.rest.model;
 
-import com.foreign.domain.Conversion;
+import com.foreign.domain.model.Conversion;
 
 import java.util.List;
 import java.util.Objects;

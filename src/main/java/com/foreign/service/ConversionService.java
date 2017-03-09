@@ -1,6 +1,6 @@
 package com.foreign.service;
 
-import com.foreign.domain.Conversion;
+import com.foreign.domain.model.Conversion;
 import com.foreign.exception.RetrofitCallException;
 
 import java.io.IOException;

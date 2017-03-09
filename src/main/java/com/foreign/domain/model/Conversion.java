@@ -1,4 +1,4 @@
-package com.foreign.domain;
+package com.foreign.domain.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
-package com.foreign.client;
+package com.foreign.http.client;
 
-import com.foreign.client.model.LiveCurrency;
+import com.foreign.http.client.model.LiveCurrency;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

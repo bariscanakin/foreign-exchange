@@ -1,6 +1,6 @@
-package com.foreign.repository;
+package com.foreign.domain.repository;
 
-import com.foreign.domain.Conversion;
+import com.foreign.domain.model.Conversion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.foreign.client.model;
+package com.foreign.http.client.model;
 
 import java.math.BigDecimal;
 import java.util.Map;

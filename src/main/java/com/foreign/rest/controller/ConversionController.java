@@ -1,6 +1,6 @@
 package com.foreign.rest.controller;
 
-import com.foreign.domain.Conversion;
+import com.foreign.domain.model.Conversion;
 import com.foreign.exception.RetrofitCallException;
 import com.foreign.rest.model.ConversionListRequest;
 import com.foreign.rest.model.ConversionListResponse;
