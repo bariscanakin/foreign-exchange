@@ -1,5 +1,10 @@
 package com.foreign.rest.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -8,8 +13,14 @@ import java.util.Objects;
  */
 public class ConversionRequest extends BaseRestRequest {
 
+    @NotNull
+    @DecimalMin(value = "0", inclusive = false)
     private BigDecimal amount;
+    @NotBlank
+    @Length(min =  3, max = 3, message = "length must be 3")
     private String currencyFrom;
+    @NotBlank
+    @Length(min =  3, max = 3, message = "length must be 3")
     private String currencyTo;
 
     public BigDecimal getAmount() {

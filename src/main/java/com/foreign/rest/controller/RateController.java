@@ -1,4 +1,4 @@
-package com.foreign.rest;
+package com.foreign.rest.controller;
 
 import com.foreign.exception.RetrofitCallException;
 import com.foreign.rest.model.RateRequest;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -26,7 +27,7 @@ public class RateController {
     }
 
     @RequestMapping(value = "/rate", method = RequestMethod.GET)
-    public RateResponse getRate(RateRequest request) throws IOException, RetrofitCallException {
+    public RateResponse getRate(@Valid RateRequest request) throws IOException, RetrofitCallException {
         BigDecimal rate = rateService.getRate(request.getCurrencyFrom(), request.getCurrencyTo());
         return new RateResponse.Builder(rate).build();
     }

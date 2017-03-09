@@ -1,14 +1,19 @@
 package com.foreign.rest.model;
 
+import com.foreign.rest.validator.ValidConversionListRequest;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.Objects;
 
 /**
  * Created by bariscanakin on 7.3.2017.
  */
+@ValidConversionListRequest
 public class ConversionListRequest extends BaseRestRequest {
 
     private Long id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     public Long getId() {

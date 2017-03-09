@@ -11,10 +11,10 @@ import java.util.Objects;
 public class RateRequest extends BaseRestRequest {
 
     @NotBlank
-    @Length(min =  3, max = 3)
+    @Length(min =  3, max = 3, message = "length must be 3")
     private String currencyFrom;
     @NotBlank
-    @Length(min =  3, max = 3)
+    @Length(min =  3, max = 3, message = "length must be 3")
     private String currencyTo;
 
     public String getCurrencyFrom() {

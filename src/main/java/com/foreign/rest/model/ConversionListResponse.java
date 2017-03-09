@@ -12,9 +12,9 @@ public class ConversionListResponse extends BaseRestResponse {
 
     private List<Conversion> conversionList;
 
-    public ConversionListResponse(boolean status, List<Conversion> conversionList) {
-        super(status);
-        this.conversionList = conversionList;
+    private ConversionListResponse(Builder builder) {
+        super(true);
+        this.conversionList = builder.conversionList;
     }
 
     public List<Conversion> getConversionList() {
@@ -43,5 +43,17 @@ public class ConversionListResponse extends BaseRestResponse {
         return "ConversionListResponse{" +
                 "conversionList=" + conversionList +
                 "} " + super.toString();
+    }
+
+    public static class Builder {
+        private List<Conversion> conversionList;
+
+        public Builder(List<Conversion> conversionList) {
+            this.conversionList = conversionList;
+        }
+
+        public ConversionListResponse build() {
+            return new ConversionListResponse(this);
+        }
     }
 }

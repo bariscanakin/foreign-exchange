@@ -1,5 +1,6 @@
 package com.foreign.rest.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -8,11 +9,12 @@ import java.util.Objects;
 public class ConversionResponse extends BaseRestResponse {
 
     private Long id;
-    private Long amount;
+    private BigDecimal amount;
 
-    public ConversionResponse(boolean status, Long id) {
-        super(status);
-        this.id = id;
+    private ConversionResponse(Builder builder) {
+        super(true);
+        this.id = builder.id;
+        this.amount = builder.amount;
     }
 
     public Long getId() {
@@ -23,11 +25,11 @@ public class ConversionResponse extends BaseRestResponse {
         this.id = id;
     }
 
-    public Long getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -52,5 +54,19 @@ public class ConversionResponse extends BaseRestResponse {
         sb.append(", amount=").append(amount);
         sb.append('}');
         return sb.toString();
+    }
+
+    public static class Builder {
+        private Long id;
+        private BigDecimal amount;
+
+        public Builder(Long id, BigDecimal amount) {
+            this.id = id;
+            this.amount = amount;
+        }
+
+        public ConversionResponse build() {
+            return new ConversionResponse(this);
+        }
     }
 }

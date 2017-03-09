@@ -9,9 +9,9 @@ public class ErrorResponse extends BaseRestResponse {
 
     private String message;
 
-    public ErrorResponse(boolean status, String message) {
-        super(status);
-        this.message = message;
+    private ErrorResponse(Builder builder) {
+        super(false);
+        this.message = builder.message;
     }
 
     public String getMessage() {
@@ -40,5 +40,17 @@ public class ErrorResponse extends BaseRestResponse {
         return "ErrorResponse{" +
                 "message='" + message + '\'' +
                 "} " + super.toString();
+    }
+
+    public static class Builder {
+        private String message;
+
+        public Builder(String message) {
+            this.message = message;
+        }
+
+        public ErrorResponse build() {
+            return new ErrorResponse(this);
+        }
     }
 }

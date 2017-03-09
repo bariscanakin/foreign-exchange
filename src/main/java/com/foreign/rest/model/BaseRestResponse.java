@@ -5,18 +5,18 @@ package com.foreign.rest.model;
  */
 public abstract class BaseRestResponse {
 
-    private boolean status;
+    private boolean success;
 
-    public BaseRestResponse(boolean status) {
-        this.status = status;
+    protected BaseRestResponse(boolean status) {
+        this.success = status;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
 

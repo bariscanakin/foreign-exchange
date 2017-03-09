@@ -1,8 +1,6 @@
 package com.foreign.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
@@ -16,18 +14,27 @@ public class Conversion {
     @Id
     @GeneratedValue
     private Long id;
-
     private String currencyFrom;
-
-    private String currenyTo;
-
+    private String currencyTo;
     private BigDecimal exchangeRate;
-
     private BigDecimal amountBefore;
-
     private BigDecimal amountAfter;
-
+    @Temporal(TemporalType.DATE)
     private Date conversionDate;
+
+    // this exists because of JPA :(
+    public Conversion() {
+    }
+
+    private Conversion(Builder builder) {
+        this.id = builder.id;
+        this.currencyFrom = builder.currencyFrom;
+        this.currencyTo = builder.currencyTo;
+        this.exchangeRate = builder.exchangeRate;
+        this.amountBefore = builder.amountBefore;
+        this.amountAfter = builder.amountAfter;
+        this.conversionDate = builder.conversionDate;
+    }
 
     public Long getId() {
         return id;
@@ -45,12 +52,12 @@ public class Conversion {
         this.currencyFrom = currencyFrom;
     }
 
-    public String getCurrenyTo() {
-        return currenyTo;
+    public String getCurrencyTo() {
+        return currencyTo;
     }
 
-    public void setCurrenyTo(String currenyTo) {
-        this.currenyTo = currenyTo;
+    public void setCurrencyTo(String currencyTo) {
+        this.currencyTo = currencyTo;
     }
 
     public BigDecimal getExchangeRate() {
@@ -92,7 +99,7 @@ public class Conversion {
         Conversion that = (Conversion) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(currencyFrom, that.currencyFrom) &&
-                Objects.equals(currenyTo, that.currenyTo) &&
+                Objects.equals(currencyTo, that.currencyTo) &&
                 Objects.equals(exchangeRate, that.exchangeRate) &&
                 Objects.equals(amountBefore, that.amountBefore) &&
                 Objects.equals(amountAfter, that.amountAfter) &&
@@ -101,7 +108,7 @@ public class Conversion {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, currencyFrom, currenyTo, exchangeRate, amountBefore, amountAfter, conversionDate);
+        return Objects.hash(id, currencyFrom, currencyTo, exchangeRate, amountBefore, amountAfter, conversionDate);
     }
 
     @Override
@@ -109,12 +116,45 @@ public class Conversion {
         final StringBuffer sb = new StringBuffer("Conversion{");
         sb.append("id=").append(id);
         sb.append(", currencyFrom='").append(currencyFrom).append('\'');
-        sb.append(", currenyTo='").append(currenyTo).append('\'');
+        sb.append(", currencyTo='").append(currencyTo).append('\'');
         sb.append(", exchangeRate=").append(exchangeRate);
         sb.append(", amountBefore=").append(amountBefore);
         sb.append(", amountAfter=").append(amountAfter);
         sb.append(", conversionDate=").append(conversionDate);
         sb.append('}');
         return sb.toString();
+    }
+
+    public static class Builder {
+        private Long id;
+        private String currencyFrom;
+        private String currencyTo;
+        private BigDecimal exchangeRate;
+        private BigDecimal amountBefore;
+        private BigDecimal amountAfter;
+        private Date conversionDate;
+
+        public Builder(String currencyFrom, String currencyTo, BigDecimal exchangeRate, BigDecimal amountBefore, BigDecimal amountAfter) {
+            this.currencyFrom = currencyFrom;
+            this.currencyTo = currencyTo;
+            this.exchangeRate = exchangeRate;
+            this.amountBefore = amountBefore;
+            this.amountAfter = amountAfter;
+            this.conversionDate = new Date();
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder conversionDate(Date conversionDate) {
+            this.conversionDate = conversionDate;
+            return this;
+        }
+
+        public Conversion build() {
+            return new Conversion(this);
+        }
     }
 }
