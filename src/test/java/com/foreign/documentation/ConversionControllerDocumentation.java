@@ -43,7 +43,7 @@ public class ConversionControllerDocumentation extends BaseControllerDocumentati
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         PayloadDocumentation.requestFields(
-                                PayloadDocumentation.fieldWithPath("amount").description("Amount to exchange formatted as: #.#").type(JsonFieldType.NUMBER),
+                                PayloadDocumentation.fieldWithPath("amount").description("Amount to be exchanged").type(JsonFieldType.NUMBER),
                                 PayloadDocumentation.fieldWithPath("currencyFrom").description("Exchange from (3 letter currency code)").type(JsonFieldType.STRING),
                                 PayloadDocumentation.fieldWithPath("currencyTo").description("Exchange to (3 letter currency code)").type(JsonFieldType.STRING)
                         ),
