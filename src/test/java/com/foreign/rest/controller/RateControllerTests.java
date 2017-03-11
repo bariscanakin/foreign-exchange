@@ -39,7 +39,7 @@ public class RateControllerTests {
         Mockito.when(this.rateService.getRate("USD", "TRY")).thenReturn(BigDecimal.valueOf(3.75d));
         RateResponse response = new RateResponse.Builder(BigDecimal.valueOf(3.75d)).build();
         String jsonResponse = this.objectMapper.writeValueAsString(response);
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rate?currencyFrom={currencyFrom}&currencyTo={currencyTo}", "USD", "TRY"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rate").param("currencyFrom", "USD").param("currencyTo", "TRY"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(jsonResponse));
@@ -50,7 +50,7 @@ public class RateControllerTests {
         Mockito.when(this.rateService.getRate("USD", "TRY")).thenThrow(Exception.class);
         ErrorResponse response = new ErrorResponse.Builder("Internal Server Error").build();
         String jsonResponse = this.objectMapper.writeValueAsString(response);
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rate?currencyFrom={currencyFrom}&currencyTo={currencyTo}", "USD", "TRY"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rate").param("currencyFrom", "USD").param("currencyTo", "TRY"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isInternalServerError())
                 .andExpect(MockMvcResultMatchers.content().json(jsonResponse));

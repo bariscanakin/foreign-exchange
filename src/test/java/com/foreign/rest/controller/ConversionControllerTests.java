@@ -63,7 +63,7 @@ public class ConversionControllerTests {
         Mockito.when(this.conversionService.getListOfConversions(1L, null)).thenReturn(conversionList);
         ConversionListResponse response = new ConversionListResponse.Builder(conversionList).build();
         String jsonResponse = this.objectMapper.writeValueAsString(response);
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/conversionList?id={id}", 1L))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/conversionList").param("id", "1"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(jsonResponse));
@@ -81,7 +81,7 @@ public class ConversionControllerTests {
         Mockito.when(this.conversionService.getListOfConversions(null, date)).thenReturn(conversionList);
         ConversionListResponse response = new ConversionListResponse.Builder(conversionList).build();
         String jsonResponse = this.objectMapper.writeValueAsString(response);
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/conversionList?date={date}", dateString))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/conversionList").param("date", dateString))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(jsonResponse));

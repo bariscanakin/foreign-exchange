@@ -16,6 +16,14 @@ public class ConversionListRequest extends BaseRestRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
+    public ConversionListRequest() {
+    }
+
+    public ConversionListRequest(Long id, Date date) {
+        this.id = id;
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }

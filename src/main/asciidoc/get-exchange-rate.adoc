@@ -1,0 +1,24 @@
+== Get Exchange Rate
+:toc: left
+
+A `GET` request to check live exchange rate between given currencies
+
+=== Request structure
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/response-fields.adoc[]
+
+=== Example request
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/http-request.adoc[]
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/curl-request.adoc[]
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/httpie-request.adoc[]
+
+=== Example response
+
+include::{snippets}/rate-controller-documentation/get-exchange-rate/http-response.adoc[]
