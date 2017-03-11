@@ -1,7 +1,6 @@
 package com.foreign.http.client;
 
 import com.foreign.http.client.model.LiveCurrency;
-import com.foreign.exception.RetrofitCallException;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

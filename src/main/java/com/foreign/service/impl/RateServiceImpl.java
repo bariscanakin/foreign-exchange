@@ -1,7 +1,7 @@
 package com.foreign.service.impl;
 
 import com.foreign.http.client.CurrencyLayerClient;
-import com.foreign.exception.RetrofitCallException;
+import com.foreign.http.client.RetrofitCallException;
 import com.foreign.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

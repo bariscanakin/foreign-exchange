@@ -1,4 +1,4 @@
-package com.foreign.exception;
+package com.foreign.http.client;
 
 /**
  * Created by bariscanakin on 7.3.2017.
@@ -13,4 +13,13 @@ public class RetrofitCallException extends Exception {
         this.code = code;
         this.body = body;
     }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
 }

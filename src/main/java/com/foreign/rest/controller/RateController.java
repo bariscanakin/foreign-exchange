@@ -1,6 +1,6 @@
 package com.foreign.rest.controller;
 
-import com.foreign.exception.RetrofitCallException;
+import com.foreign.http.client.RetrofitCallException;
 import com.foreign.rest.model.RateRequest;
 import com.foreign.rest.model.RateResponse;
 import com.foreign.service.RateService;

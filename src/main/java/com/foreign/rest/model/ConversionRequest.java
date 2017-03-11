@@ -23,6 +23,15 @@ public class ConversionRequest extends BaseRestRequest {
     @Length(min =  3, max = 3, message = "length must be 3")
     private String currencyTo;
 
+    public ConversionRequest() {
+    }
+
+    public ConversionRequest(BigDecimal amount, String currencyFrom, String currencyTo) {
+        this.amount = amount;
+        this.currencyFrom = currencyFrom;
+        this.currencyTo = currencyTo;
+    }
+
     public BigDecimal getAmount() {
         return amount;
     }

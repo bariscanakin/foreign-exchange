@@ -1,7 +1,7 @@
 package com.foreign.service;
 
 import com.foreign.domain.model.Conversion;
-import com.foreign.exception.RetrofitCallException;
+import com.foreign.http.client.RetrofitCallException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
