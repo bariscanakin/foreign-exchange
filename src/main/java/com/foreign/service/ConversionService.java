@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ConversionService {
 
-    Conversion exchangeCurrency(String currencyFrom, String currencyTo, BigDecimal amount) throws IOException, RetrofitCallException;
+    Conversion exchangeCurrency(String currencyFrom, String currencyTo, BigDecimal amount) throws Exception;
 
     List<Conversion> getListOfConversions(Long id, Date conversionDate);
 }

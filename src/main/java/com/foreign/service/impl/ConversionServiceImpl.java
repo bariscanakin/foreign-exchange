@@ -1,14 +1,12 @@
 package com.foreign.service.impl;
 
 import com.foreign.domain.model.Conversion;
-import com.foreign.http.client.RetrofitCallException;
 import com.foreign.domain.repository.ConversionRepository;
 import com.foreign.service.ConversionService;
 import com.foreign.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,7 +29,7 @@ public class ConversionServiceImpl implements ConversionService {
     }
 
     @Override
-    public Conversion exchangeCurrency(String currencyFrom, String currencyTo, BigDecimal amount) throws IOException, RetrofitCallException {
+    public Conversion exchangeCurrency(String currencyFrom, String currencyTo, BigDecimal amount) throws Exception {
         BigDecimal rate = rateService.getRate(currencyFrom, currencyTo);
 
         BigDecimal exchangedAmount = amount.multiply(rate);

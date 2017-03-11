@@ -1,12 +1,10 @@
 package com.foreign.service.impl;
 
-import com.foreign.http.client.CurrencyLayerClient;
-import com.foreign.http.client.RetrofitCallException;
+import com.foreign.http.client.CurrencyServiceStrategy;
 import com.foreign.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
@@ -15,16 +13,16 @@ import java.math.BigDecimal;
 @Service
 public class RateServiceImpl implements RateService {
 
-    private CurrencyLayerClient client;
+    private CurrencyServiceStrategy currencyService;
 
     @Autowired
-    public RateServiceImpl(CurrencyLayerClient client) {
-        this.client = client;
+    public RateServiceImpl(CurrencyServiceStrategy currencyService) {
+        this.currencyService = currencyService;
     }
 
     @Override
-    public BigDecimal getRate(String currencyFrom, String currencyTo) throws IOException, RetrofitCallException {
-        return client.getLiveCurrency(currencyFrom, currencyTo);
+    public BigDecimal getRate(String currencyFrom, String currencyTo) throws Exception {
+        return currencyService.getLiveCurrency(currencyFrom, currencyTo);
 
     }
 }

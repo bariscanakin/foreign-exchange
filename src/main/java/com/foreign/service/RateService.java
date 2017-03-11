@@ -1,8 +1,5 @@
 package com.foreign.service;
 
-import com.foreign.http.client.RetrofitCallException;
-
-import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
@@ -10,5 +7,5 @@ import java.math.BigDecimal;
  */
 public interface RateService {
 
-    BigDecimal getRate(String currencyFrom, String currencyTo) throws IOException, RetrofitCallException;
+    BigDecimal getRate(String currencyFrom, String currencyTo) throws Exception;
 }
