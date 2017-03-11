@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by bariscanakin on 7.3.2017.
  */
 @Component
-public class CurrencyLayerService implements CurrencyServiceStrategy {
+public class CurrencyLayerRetrofitService implements CurrencyServiceStrategy {
 
     @Value("${currencyLayer.url.base}")
     private String baseUrl;

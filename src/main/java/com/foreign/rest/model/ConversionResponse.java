@@ -39,7 +39,7 @@ public class ConversionResponse extends BaseRestResponse {
         if (o == null || getClass() != o.getClass()) return false;
         ConversionResponse that = (ConversionResponse) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(amount, that.amount);
+                Objects.compare(amount, that.amount, BigDecimal::compareTo) == 0;
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.foreign.domain.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -14,13 +17,18 @@ public class Conversion {
     @Id
     @GeneratedValue
     private Long id;
+    @Column
     private String currencyFrom;
+    @Column
     private String currencyTo;
+    @Column
     private BigDecimal exchangeRate;
+    @Column
     private BigDecimal amountBefore;
+    @Column
     private BigDecimal amountAfter;
-    @Temporal(TemporalType.DATE)
-    private Date conversionDate;
+    @Column
+    private LocalDate conversionDate;
 
     // this exists because of JPA :(
     public Conversion() {
@@ -84,11 +92,11 @@ public class Conversion {
         this.amountAfter = amountAfter;
     }
 
-    public Date getConversionDate() {
+    public LocalDate getConversionDate() {
         return conversionDate;
     }
 
-    public void setConversionDate(Date conversionDate) {
+    public void setConversionDate(LocalDate conversionDate) {
         this.conversionDate = conversionDate;
     }
 
@@ -100,9 +108,9 @@ public class Conversion {
         return Objects.equals(id, that.id) &&
                 Objects.equals(currencyFrom, that.currencyFrom) &&
                 Objects.equals(currencyTo, that.currencyTo) &&
-                Objects.equals(exchangeRate, that.exchangeRate) &&
-                Objects.equals(amountBefore, that.amountBefore) &&
-                Objects.equals(amountAfter, that.amountAfter) &&
+                Objects.compare(exchangeRate, that.exchangeRate, BigDecimal::compareTo) == 0 &&
+                Objects.compare(amountBefore, that.amountBefore, BigDecimal::compareTo) == 0 &&
+                Objects.compare(amountAfter, that.amountAfter, BigDecimal::compareTo) == 0 &&
                 Objects.equals(conversionDate, that.conversionDate);
     }
 
@@ -132,7 +140,7 @@ public class Conversion {
         private BigDecimal exchangeRate;
         private BigDecimal amountBefore;
         private BigDecimal amountAfter;
-        private Date conversionDate;
+        private LocalDate conversionDate;
 
         public Builder(String currencyFrom, String currencyTo, BigDecimal exchangeRate, BigDecimal amountBefore, BigDecimal amountAfter) {
             this.currencyFrom = currencyFrom;
@@ -140,7 +148,7 @@ public class Conversion {
             this.exchangeRate = exchangeRate;
             this.amountBefore = amountBefore;
             this.amountAfter = amountAfter;
-            this.conversionDate = new Date();
+            this.conversionDate = LocalDate.now();
         }
 
         public Builder id(Long id) {
@@ -148,7 +156,7 @@ public class Conversion {
             return this;
         }
 
-        public Builder conversionDate(Date conversionDate) {
+        public Builder conversionDate(LocalDate conversionDate) {
             this.conversionDate = conversionDate;
             return this;
         }

@@ -2,11 +2,9 @@ package com.foreign.domain.repository;
 
 import com.foreign.domain.model.Conversion;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.TemporalType;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,5 +13,5 @@ import java.util.List;
 @Repository
 public interface ConversionRepository extends JpaRepository<Conversion, Long> {
 
-    List<Conversion> findByConversionDate(@Temporal(TemporalType.DATE) Date conversionDate);
+    List<Conversion> findByConversionDate(LocalDate conversionDate);
 }

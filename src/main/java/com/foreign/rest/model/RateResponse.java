@@ -28,7 +28,7 @@ public class RateResponse extends BaseRestResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RateResponse that = (RateResponse) o;
-        return Objects.equals(exchangeRate, that.exchangeRate);
+        return Objects.compare(exchangeRate, that.exchangeRate, BigDecimal::compareTo) == 0;
     }
 
     @Override

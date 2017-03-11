@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,7 +40,7 @@ public class ConversionServiceImpl implements ConversionService {
     }
 
     @Override
-    public List<Conversion> getListOfConversions(Long id, Date conversionDate) {
+    public List<Conversion> getListOfConversions(Long id, LocalDate conversionDate) {
         if (id != null) {
             return getListOfConversionsById(id);
         }
@@ -52,7 +52,7 @@ public class ConversionServiceImpl implements ConversionService {
         throw new IllegalArgumentException("Only one of id and conversionDate can be null");
     }
 
-    private List<Conversion> getListOfConversionsByConversionDate(Date conversionDate) {
+    private List<Conversion> getListOfConversionsByConversionDate(LocalDate conversionDate) {
         return conversionRepository.findByConversionDate(conversionDate);
     }
 

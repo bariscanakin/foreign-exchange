@@ -3,7 +3,7 @@ package com.foreign.rest.model;
 import com.foreign.rest.validator.ValidConversionListRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -13,13 +13,13 @@ import java.util.Objects;
 public class ConversionListRequest extends BaseRestRequest {
 
     private Long id;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
 
     public ConversionListRequest() {
     }
 
-    public ConversionListRequest(Long id, Date date) {
+    public ConversionListRequest(Long id, LocalDate date) {
         this.id = id;
         this.date = date;
     }
@@ -32,11 +32,11 @@ public class ConversionListRequest extends BaseRestRequest {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -1,11 +1,9 @@
 package com.foreign.service;
 
 import com.foreign.domain.model.Conversion;
-import com.foreign.http.client.RetrofitCallException;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,5 +13,5 @@ public interface ConversionService {
 
     Conversion exchangeCurrency(String currencyFrom, String currencyTo, BigDecimal amount) throws Exception;
 
-    List<Conversion> getListOfConversions(Long id, Date conversionDate);
+    List<Conversion> getListOfConversions(Long id, LocalDate conversionDate);
 }

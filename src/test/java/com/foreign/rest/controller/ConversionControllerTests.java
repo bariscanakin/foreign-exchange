@@ -20,9 +20,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -71,9 +70,8 @@ public class ConversionControllerTests {
 
     @Test
     public void testConversionListByDate() throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = "2017-02-28";
-        Date date = dateFormat.parse(dateString);
+        LocalDate date = LocalDate.of(2017, 2, 28);
         List<Conversion> conversionList = Arrays.asList(new Conversion.Builder("USD", "TRY", BigDecimal.valueOf(3.75d),
                         BigDecimal.valueOf(100d), BigDecimal.valueOf(375d)).id(1L).build(),
                 new Conversion.Builder("USD", "TRY", BigDecimal.valueOf(3.75d),

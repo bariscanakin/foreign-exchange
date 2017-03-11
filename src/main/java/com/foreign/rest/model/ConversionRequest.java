@@ -61,7 +61,7 @@ public class ConversionRequest extends BaseRestRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ConversionRequest that = (ConversionRequest) o;
-        return Objects.equals(amount, that.amount) &&
+        return Objects.compare(amount, that.amount, BigDecimal::compareTo) == 0 &&
                 Objects.equals(currencyFrom, that.currencyFrom) &&
                 Objects.equals(currencyTo, that.currencyTo);
     }
