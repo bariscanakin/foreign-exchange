@@ -1,7 +1,6 @@
 package com.foreign.rest.controller;
 
 import com.foreign.domain.model.Conversion;
-import com.foreign.http.client.RetrofitCallException;
 import com.foreign.rest.model.ConversionListRequest;
 import com.foreign.rest.model.ConversionListResponse;
 import com.foreign.rest.model.ConversionRequest;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,7 +29,7 @@ public class ConversionController {
     }
 
     @RequestMapping(value = "/conversion", method = RequestMethod.POST)
-    public ConversionResponse doConversion(@RequestBody @Valid ConversionRequest request) throws IOException, RetrofitCallException {
+    public ConversionResponse doConversion(@RequestBody @Valid ConversionRequest request) throws Exception {
         Conversion conversion = conversionService.exchangeCurrency(request.getCurrencyFrom(), request.getCurrencyTo(), request.getAmount());
 
         return new ConversionResponse.Builder(conversion.getId(), conversion.getAmountAfter()).build();
